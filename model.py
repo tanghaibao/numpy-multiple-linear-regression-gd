@@ -142,8 +142,16 @@ def epoch_train_val_losses(X_train, y_train, X_val, y_val, weights):
     # TODO: return the pair (train_loss, val_loss) as MSE floats
     return ((X_train @ weights - y_train) ** 2).mean(), ((X_val @ weights - y_val) ** 2).mean()
 
-# Step 14 - update_early_stop_state (not yet solved)
-# TODO: implement
+# Step 14 - update_early_stop_state
+def update_early_stop_state(val_loss, best_val_loss, wait, weights, best_weights, patience):
+    # TODO: Update best weights and patience counter; signal stop when val loss stalls...
+    if val_loss < best_val_loss:
+        best_val_loss = val_loss
+        best_weights = weights
+        wait = 0
+    else:
+        wait += 1
+    return (best_val_loss, wait, best_weights, wait >= patience)
 
 # Step 15 - init_training_state (not yet solved)
 # TODO: implement
