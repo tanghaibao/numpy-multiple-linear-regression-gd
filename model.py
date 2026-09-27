@@ -103,6 +103,8 @@ def normal_equation(X, y):
 # Step 11 - initialize_weights
 def initialize_weights(n_features, seed=None):
     # TODO: Return (n_features,) weights sampled from N(0, 0.01)
+    if seed is None:
+        return np.random.normal(0, 0.01, size=(n_features,))
     r = np.random.default_rng(seed)
     return r.normal(0, 0.01, size=(n_features,))
 
