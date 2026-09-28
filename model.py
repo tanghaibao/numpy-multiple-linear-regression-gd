@@ -105,8 +105,9 @@ def initialize_weights(n_features, seed=None):
     # TODO: Return (n_features,) weights sampled from N(0, 0.01)
     if seed is None:
         return np.random.normal(0, 0.01, size=(n_features,))
-    r = np.random.default_rng(seed)
-    return r.normal(0, 0.01, size=(n_features,))
+    # r = np.random.default_rng(seed)
+    np.random.seed(seed)
+    return np.random.normal(0, 0.01, size=(n_features,))
 
 # Step 12 - gd_step
 def gd_step(X, y, weights, lr):
@@ -168,6 +169,14 @@ def init_training_state(n_features, seed=None):
         "val_losses": [], 
         "stopped": False
     }
+
+def initialize_weights(n_features, seed=None):
+    # TODO: Return (n_features,) weights sampled from N(0, 0.01)
+    if seed is None:
+        return np.random.normal(0, 0.01, size=(n_features,))
+    # r = np.random.default_rng(seed)
+    np.random.seed(seed)
+    return np.random.normal(0, 0.01, size=(n_features,))
 
 # Step 16 - run_one_epoch (not yet solved)
 # TODO: implement
